@@ -14,7 +14,7 @@ split = [ursula[i:i+limit] for i in range(0, len(ursula), limit)]
 
 print('split')
 print(split)
-line_height = 50
+line_height = 40
 
 try:
     epd = epd7in5.EPD()
@@ -32,7 +32,7 @@ try:
     # write
     for line in split:
         draw.text((10, line_height), line, font = font24, fill = 0)
-        line_height = line_height+10
+        line_height = line_height+line_height
 
 
     # write to display
