@@ -14,7 +14,7 @@ split = [ursula[i:i+limit] for i in range(0, len(ursula), limit)]
 
 print('split')
 print(split)
-line_height = 20
+line_height = 15
 
 try:
     epd = epd7in5.EPD()
