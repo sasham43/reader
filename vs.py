@@ -14,6 +14,7 @@ split = [ursula[i:i+limit] for i in range(0, len(ursula), limit)]
 
 print('split')
 print(split)
+line_height = 10
 
 try:
     epd = epd7in5.EPD()
@@ -24,12 +25,17 @@ try:
     print("Drawing")
     # print("read bmp file on window")
     Himage = Image.new('1', (epd7in5.EPD_HEIGHT, epd7in5.EPD_WIDTH), 255)  # 255: clear the frame
-    # bmp = Image.open('/home/pi/14.bmp')
-    # Himage2.paste(bmp, (50,10))
-    # epd.display(epd.getbuffer(Himage2))
+
     font24 = ImageFont.truetype('/usr/share/fonts/truetype/lato/Lato-Regular.ttf', 24)
     draw = ImageDraw.Draw(Himage)
-    draw.text((10, 0), 'this si some text, let us see how it goes.  we go we go we go', font = font24, fill = 0)
+
+    # write
+    for line in split:
+        draw.text((line_height, 0), line, font = font24, fill = 0)
+        line_height+10
+
+
+    # write to display
     epd.display(epd.getbuffer(Himage))
 
     print('sleeping')
