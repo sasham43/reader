@@ -33,6 +33,7 @@ try:
     for line in split:
         draw.text((10, line_height), line, font = font24, fill = 0)
         line_height = line_height+line_height
+        print(line_height)
 
 
     # write to display
