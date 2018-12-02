@@ -22,6 +22,7 @@ try:
     # font24 = ImageFont.truetype('/usr/share/fonts/truetype/lato/Lato-Regular.ttf', 24)
     draw = ImageDraw.Draw(Himage)
     draw.text((10, 0), 'this si some text, let us see how it goes.  we go we go we go', fill = 0)
+    epd.display(epd.getbuffer(Himage))
 
     print('sleeping')
     epd.sleep()
