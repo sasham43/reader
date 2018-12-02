@@ -31,7 +31,7 @@ try:
 
     # write
     for line in split:
-        draw.text((line_height, 0), line, font = font24, fill = 0)
+        draw.text((10, line_height), line, font = font24, fill = 0)
         line_height = line_height+10
 
 
