@@ -20,6 +20,7 @@ try:
     # Himage2.paste(bmp, (50,10))
     # epd.display(epd.getbuffer(Himage2))
     font24 = ImageFont.truetype('/usr/share/fonts/truetype/lato/Lato-Regular.ttf', 24)
+    draw = ImageDraw.Draw(Himage)
     draw.text((10, 0), ursula, font = font24, fill = 0)
 
     epd.sleep()
