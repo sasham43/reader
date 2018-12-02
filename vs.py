@@ -14,7 +14,7 @@ split = [ursula[i:i+limit] for i in range(0, len(ursula), limit)]
 
 print('split')
 print(split)
-line_height = 15
+line_height = 25
 line_height_base = line_height
 
 try:
