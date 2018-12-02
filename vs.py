@@ -14,15 +14,16 @@ try:
     epd.Clear(0xFF)
 
     print("Drawing")
-    print("read bmp file on window")
+    # print("read bmp file on window")
     Himage = Image.new('1', (epd7in5.EPD_HEIGHT, epd7in5.EPD_WIDTH), 255)  # 255: clear the frame
     # bmp = Image.open('/home/pi/14.bmp')
     # Himage2.paste(bmp, (50,10))
     # epd.display(epd.getbuffer(Himage2))
-    font24 = ImageFont.truetype('/usr/share/fonts/truetype/lato/Lato-Regular.ttf', 24)
+    # font24 = ImageFont.truetype('/usr/share/fonts/truetype/lato/Lato-Regular.ttf', 24)
     draw = ImageDraw.Draw(Himage)
-    draw.text((10, 0), ursula, font = font24, fill = 0)
+    draw.text((10, 0), ursula, fill = 0)
 
+    print('sleeping')
     epd.sleep()
 
 except:
