@@ -1,4 +1,4 @@
-import epd7in5
+import epd
 import time
 from PIL import Image,ImageDraw,ImageFont
 import traceback
