@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 import epd as epd7in5
 import time
 from PIL import Image,ImageDraw,ImageFont
