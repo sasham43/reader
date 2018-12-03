@@ -4,8 +4,13 @@ import epd as epd7in5
 import time
 from PIL import Image,ImageDraw,ImageFont
 import traceback
+import sys
+print "This is the name of the script: ", sys.argv[0]
 
-pic = '/home/pi/cover.bmp'
+if len(sys.argv) > 1:
+    pic = sys.argv[1]
+else:
+    pic = '/home/pi/cover.bmp'
 
 try:
     epd = epd7in5.EPD()
