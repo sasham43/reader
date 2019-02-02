@@ -77,8 +77,8 @@ pages = split_into_rows(ursula)
 try:
     epd = epd7in5.EPD()
     epd.init()
-    print("Clear")
-    epd.Clear(0xFF)
+    # print("Clear")
+    # epd.Clear(0xFF)
 
     print("Drawing")
     # print("read bmp file on window")
@@ -94,27 +94,22 @@ try:
 
     # go page by page
     for page in pages:
+        epd.Clear(0xFF) # start off fresh
         for line in page:
             draw.text((10, line_height), line, font = font24, fill = 0)
             line_height = line_height_base + line_height
             print(line_height)
-
+        # reset line height
         line_height = line_height_base
+
+        # write to display
+        epd.display(epd.getbuffer(Himage))
+
         print('sleeping')
+        epd.sleep()
+
+        print('new page')
         time.sleep(60)
-
-    # write
-    # for line in split:
-    #     draw.text((10, line_height), line, font = font24, fill = 0)
-    #     line_height = line_height_base + line_height
-    #     print(line_height)
-
-
-    # write to display
-    epd.display(epd.getbuffer(Himage))
-
-    print('sleeping')
-    epd.sleep()
 
 except:
     print('traceback.format_exc():\n%s', traceback.format_exc())
