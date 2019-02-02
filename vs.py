@@ -101,9 +101,10 @@ try:
         for line in page:
             draw.text((10, line_height), line, font = font24, fill = 0)
             line_height = line_height_base + line_height
+            Himage.save(sys.stdout, "PNG")
             # print(line_height)
         # reset line height
-        line_height = line_height_base
+        line_height = 0
 
         buffer_time = time.time()
         buffer = epd.getbuffer(Himage)
