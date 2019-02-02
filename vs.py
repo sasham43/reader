@@ -77,25 +77,20 @@ pages = split_into_rows(ursula)
 try:
     epd = epd7in5.EPD()
     epd.init()
-    # print("Clear")
-    # epd.Clear(0xFF)
 
-    print("Drawing")
-    # print("read bmp file on window")
-    Himage = Image.new('1', (epd7in5.EPD_HEIGHT, epd7in5.EPD_WIDTH), 255)  # 255: clear the frame
-
-    # font24 = ImageFont.truetype('/usr/share/fonts/truetype/lato/Lato-Regular.ttf', 24)
-    # font24 = ImageFont.truetype('/usr/share/fonts/truetype/courier/cour.ttf', 24)
+    # fonts
     font_base = '/usr/share/fonts/treutype/msttcorefonts/{file}'
     font_file = 'Courier_New_Bold.ttf'
-    # font24 = ImageFont.truetype('/usr/share/fonts/truetype/msttcorefonts/cour.ttf', 24)
     font24 = ImageFont.truetype(font_base.format(file=font_file), 24)
-    draw = ImageDraw.Draw(Himage)
+
+    print("Drawing")
 
     # go page by page
     for page in pages:
         print('clearing')
         epd.Clear(0xFF) # start off fresh
+        Himage = Image.new('1', (epd7in5.EPD_HEIGHT, epd7in5.EPD_WIDTH), 255)  # 255: clear the frame
+        draw = ImageDraw.Draw(Himage)
         for line in page:
             draw.text((10, line_height), line, font = font24, fill = 0)
             line_height = line_height_base + line_height
