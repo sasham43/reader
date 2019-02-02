@@ -55,8 +55,10 @@ def split_into_rows(input):
 pages = split_into_rows(ursula)
 
 try:
+    init_time = time.time()
     epd = epd7in5.EPD()
     epd.init()
+    print('initialized', time.time() - init_time)
 
     # fonts
     font_base = '/usr/share/fonts/treutype/msttcorefonts/{file}'
@@ -108,7 +110,8 @@ try:
         epd.sleep()
 
         print('new page')
-        time.sleep(60)
+        # time.sleep(60)
+        epd.Clear(0xFF) # start off fresh
 
 except:
     print('traceback.format_exc():\n%s', traceback.format_exc())
