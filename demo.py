@@ -35,7 +35,8 @@ try:
     # Drawing on the Vertical image
     Limage = Image.new('1', (epd7in5.EPD_HEIGHT, epd7in5.EPD_WIDTH), 255)  # 255: clear the frame
     draw = ImageDraw.Draw(Limage)
-    font18 = ImageFont.truetype('/usr/share/fonts/truetype/wqy/wqy-microhei.ttc', 18)
+    # font18 = ImageFont.truetype('/usr/share/fonts/truetype/wqy/wqy-microhei.ttc', 18)
+    font18 = font24
     draw.text((2, 0), 'hello world', font = font18, fill = 0)
     draw.text((2, 20), '7.5inch epd', font = font18, fill = 0)
     draw.text((20, 50), u'微雪电子', font = font18, fill = 0)
