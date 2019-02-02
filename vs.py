@@ -79,14 +79,14 @@ try:
         draw = ImageDraw.Draw(Himage)
         print('done drawing', time.time() - image_time)
 
-        print(page)
+        # print(page)
         for line in page:
             draw.text((10, line_height), line, font = font24, fill = 0)
             line_height = line_height_base + line_height
             # print(line_height)
         # save image
 
-        Himage.save('/home/pi/page_{index}'.format(index), "PNG")
+        Himage.save('/home/pi/page_{index}'.format(index=index), "PNG")
         # reset line height
         line_height = 0
 
