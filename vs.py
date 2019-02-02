@@ -86,7 +86,7 @@ try:
             # print(line_height)
         # save image
 
-        Himage.save('/home/pi/page_{index}'.format(index=index), "PNG")
+        # Himage.save('/home/pi/page_{index}.png'.format(index=index), "PNG")
         # reset line height
         line_height = 0
 
@@ -96,6 +96,7 @@ try:
 
         del draw
         del Himage
+        del buffer
 
         # write to display
         write_time = time.time()
