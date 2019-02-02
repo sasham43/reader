@@ -48,7 +48,7 @@ def split_into_rows(input):
             rows = pages[page_number]
         else:
             # new page
-            print('new_page')
+            # print('new_page')
             page_number = page_number + 1
             row_number = 0
             pages.append([''])
@@ -64,45 +64,56 @@ def split_into_rows(input):
         else:
             rows[row_number] = '{base} {word}'.format(base=rows[row_number], word=word)
 
-    print(words)
-    print(pages)
+    # print(words)
+    # print(pages)
 
     # for i in range(0, len(input), limit):
     #     print(i, input[i:i+limit])
 
-split_into_rows(ursula)
+pages = split_into_rows(ursula)
 
-# try:
-#     epd = epd7in5.EPD()
-#     epd.init()
-#     print("Clear")
-#     epd.Clear(0xFF)
-#
-#     print("Drawing")
-#     # print("read bmp file on window")
-#     Himage = Image.new('1', (epd7in5.EPD_HEIGHT, epd7in5.EPD_WIDTH), 255)  # 255: clear the frame
-#
-#     # font24 = ImageFont.truetype('/usr/share/fonts/truetype/lato/Lato-Regular.ttf', 24)
-#     # font24 = ImageFont.truetype('/usr/share/fonts/truetype/courier/cour.ttf', 24)
-#     font_base = '/usr/share/fonts/treutype/msttcorefonts/{file}'
-#     font_file = 'Courier_New_Bold.ttf'
-#     # font24 = ImageFont.truetype('/usr/share/fonts/truetype/msttcorefonts/cour.ttf', 24)
-#     font24 = ImageFont.truetype(font_base.format(file=font_file), 24)
-#     draw = ImageDraw.Draw(Himage)
-#
-#     # write
-#     for line in split:
-#         draw.text((10, line_height), line, font = font24, fill = 0)
-#         line_height = line_height_base + line_height
-#         print(line_height)
-#
-#
-#     # write to display
-#     epd.display(epd.getbuffer(Himage))
-#
-#     print('sleeping')
-#     epd.sleep()
-#
-# except:
-#     print('traceback.format_exc():\n%s', traceback.format_exc())
-#     exit()
+try:
+    epd = epd7in5.EPD()
+    epd.init()
+    print("Clear")
+    epd.Clear(0xFF)
+
+    print("Drawing")
+    # print("read bmp file on window")
+    Himage = Image.new('1', (epd7in5.EPD_HEIGHT, epd7in5.EPD_WIDTH), 255)  # 255: clear the frame
+
+    # font24 = ImageFont.truetype('/usr/share/fonts/truetype/lato/Lato-Regular.ttf', 24)
+    # font24 = ImageFont.truetype('/usr/share/fonts/truetype/courier/cour.ttf', 24)
+    font_base = '/usr/share/fonts/treutype/msttcorefonts/{file}'
+    font_file = 'Courier_New_Bold.ttf'
+    # font24 = ImageFont.truetype('/usr/share/fonts/truetype/msttcorefonts/cour.ttf', 24)
+    font24 = ImageFont.truetype(font_base.format(file=font_file), 24)
+    draw = ImageDraw.Draw(Himage)
+
+    # go page by page
+    for page in pages:
+        for line in page:
+            draw.text((10, line_height), line, font = font24, fill = 0)
+            line_height = line_height_base + line_height
+            print(line_height)
+
+        line_height = line_height_base
+        print('sleeping')
+        sleep(5000)
+
+    # write
+    # for line in split:
+    #     draw.text((10, line_height), line, font = font24, fill = 0)
+    #     line_height = line_height_base + line_height
+    #     print(line_height)
+
+
+    # write to display
+    epd.display(epd.getbuffer(Himage))
+
+    print('sleeping')
+    epd.sleep()
+
+except:
+    print('traceback.format_exc():\n%s', traceback.format_exc())
+    exit()
