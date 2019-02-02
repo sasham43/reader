@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 
-# import epd as epd7in5
-# import time
-# from PIL import Image,ImageDraw,ImageFont
-# import traceback
+import epd as epd7in5
+import time
+from PIL import Image,ImageDraw,ImageFont
+import traceback
 
 ursula = "It exists... It's real. I can call it a misunderstanding, but I can't pretend that it doesn't exist, or will ever cease to exist. Suffering is the condition on which we live. And when it comes, you know it. You know it as the truth. Of course it's right to cure diseases, to prevent hunger and injustice, as the social organism does. But no society can change the nature of existence. We can't prevent suffering. This pain and that pain, yes, but not Pain. A society can only relieve social suffering, unnecessary suffering. The rest remains. The root, the reality. All of us here are going to know grief; if we live fifty years, we'll have known pain for fifty years... And yet, I wonder if it isn't all a misunderstanding - this grasping after happiness, this fear of pain... If instead of fearing it and running from it, one could... get through it, go beyond it. There is something beyond it. It's the self that suffers, and there's a place where the self-ceases. I don't know how to say it. But I believe that the reality - the truth that I recognize in suffering as I don't in comfort and happiness - that the reality of pain is not pain. If you can get through it. If you can endure it all the way."
 
