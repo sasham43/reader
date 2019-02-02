@@ -23,17 +23,38 @@ row_limit = 24
 line_height = 25
 line_height_base = line_height
 
+# class Page:
+
+
 def split_into_pages(input):
     output = []
     # split into array of dicts, with word prop and length
     # words = input.split()
     words = []
+    rows = [{
+        "text": ''
+    }]
+    row_number = 0
+    page_length = 0
     for word in input.split():
         words.append({
             "word": word,
             "length": len(word)
         })
+        # slowly shift the words into rows
+        current_row_length = len(rows[row_number]['text'])
+        print(row_number, current_row_length)
+        if current_row_length + len(word) + 1 > limit:
+            # too big
+            row_number = row_number + 1
+            rows.append({
+                "text": word
+            })
+        else:
+            rows[row_number]['text'] = '{base} {word}'.format(base=rows[row_number]['text'], word=word)
+
     print(words)
+    print(rows)
 
     # for i in range(0, len(input), limit):
     #     print(i, input[i:i+limit])
