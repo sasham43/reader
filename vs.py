@@ -17,10 +17,6 @@ limit = 31
 # row limit = 25
 row_limit = 22
 
-# split = [ursula[i:i+limit] for i in range(0, len(ursula), limit)]
-#
-# print('split')
-# print(split)
 line_height = 25
 line_height_base = line_height
 
@@ -28,11 +24,6 @@ line_height_base = line_height
 
 
 def split_into_rows(input):
-    output = []
-    # split into array of dicts, with word prop and length
-    # words = input.split()
-    words = []
-    # rows = ['']
     pages = [
         ['']
     ]
@@ -40,16 +31,10 @@ def split_into_rows(input):
     page_number = 0
     page_length = 0
     for word in input.split():
-        # words.append({
-        #     "word": word,
-        #     "length": len(word)
-        # })
         # put into pages
         if len(pages[page_number]) <= row_limit:
             rows = pages[page_number]
         else:
-            # new page
-            # print('new_page')
             page_number = page_number + 1
             row_number = 0
             pages.append([''])
@@ -66,12 +51,6 @@ def split_into_rows(input):
             rows[row_number] = '{base} {word}'.format(base=rows[row_number], word=word)
 
     return pages
-
-    # print(words)
-    # print(pages)
-
-    # for i in range(0, len(input), limit):
-    #     print(i, input[i:i+limit])
 
 pages = split_into_rows(ursula)
 
@@ -91,7 +70,7 @@ try:
     # print("Drawing")
 
     # go page by page
-    for page in pages:
+    for page, index in enumerate(pages):
         print('drawing')
         image_time = time.time()
         Himage = Image.new('1', (epd7in5.EPD_HEIGHT, epd7in5.EPD_WIDTH), 255)  # 255: clear the frame
@@ -102,8 +81,10 @@ try:
         for line in page:
             draw.text((10, line_height), line, font = font24, fill = 0)
             line_height = line_height_base + line_height
-            Himage.save(sys.stdout, "PNG")
             # print(line_height)
+        # save image
+
+        Himage.save('/home/pi/page_{index}'.format(index), "PNG")
         # reset line height
         line_height = 0
 
