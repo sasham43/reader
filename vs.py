@@ -104,10 +104,14 @@ try:
         # reset line height
         line_height = line_height_base
 
+        buffer_time = time.time()
+        buffer = epd.getbuffer(Himage)
+        print('buffered', time.time() - buffer_time)
+
         # write to display
         write_time = time.time()
         print('writing')
-        epd.display(epd.getbuffer(Himage))
+        epd.display(buffer)
         print('wrote', time.time() - write_time)
 
         print('sleeping')
