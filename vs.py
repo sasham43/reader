@@ -94,15 +94,15 @@ try:
         buffer = epd.getbuffer(Himage)
         print('buffered', time.time() - buffer_time)
 
-        del draw
-        del Himage
-        del buffer
-
         # write to display
         write_time = time.time()
         print('writing')
         epd.display(buffer)
         print('wrote', time.time() - write_time)
+
+        del draw
+        del Himage
+        del buffer
 
         print('sleeping')
         epd.sleep()
