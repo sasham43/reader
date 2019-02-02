@@ -110,6 +110,7 @@ try:
         print('buffered', time.time() - buffer_time)
 
         del draw
+        del Himage
 
         # write to display
         write_time = time.time()
