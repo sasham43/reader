@@ -14,7 +14,7 @@ ursula = "It exists... It's real. I can call it a misunderstanding, but I can't 
 limit = 31
 
 # row limit = 25
-row_limit = 24
+row_limit = 22
 
 # split = [ursula[i:i+limit] for i in range(0, len(ursula), limit)]
 #
@@ -101,7 +101,7 @@ try:
         for line in page:
             draw.text((10, line_height), line, font = font24, fill = 0)
             line_height = line_height_base + line_height
-            print(line_height)
+            # print(line_height)
         # reset line height
         line_height = line_height_base
 
