@@ -83,14 +83,20 @@ try:
     font_file = 'Courier_New_Bold.ttf'
     font24 = ImageFont.truetype(font_base.format(file=font_file), 24)
 
-    print("Drawing")
+    clear_time = time.time()
+    print('clearing')
+    epd.Clear(0xFF) # start off fresh
+    print('cleared', time.time() - clear_time)
+    # print("Drawing")
 
     # go page by page
     for page in pages:
-        print('clearing')
-        epd.Clear(0xFF) # start off fresh
+        print('drawing')
+        image_time = time.time()
         Himage = Image.new('1', (epd7in5.EPD_HEIGHT, epd7in5.EPD_WIDTH), 255)  # 255: clear the frame
         draw = ImageDraw.Draw(Himage)
+        print('done drawing', time.time() - image_time)
+
         for line in page:
             draw.text((10, line_height), line, font = font24, fill = 0)
             line_height = line_height_base + line_height
@@ -99,8 +105,10 @@ try:
         line_height = line_height_base
 
         # write to display
+        write_time = time.time()
         print('writing')
         epd.display(epd.getbuffer(Himage))
+        print('wrote', time.time() - write_time)
 
         print('sleeping')
         epd.sleep()
