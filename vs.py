@@ -101,7 +101,7 @@ try:
 
         line_height = line_height_base
         print('sleeping')
-        time.sleep(15)
+        time.sleep(60)
 
     # write
     # for line in split:
