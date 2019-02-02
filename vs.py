@@ -94,6 +94,7 @@ try:
 
     # go page by page
     for page in pages:
+        print('clearing')
         epd.Clear(0xFF) # start off fresh
         for line in page:
             draw.text((10, line_height), line, font = font24, fill = 0)
@@ -103,6 +104,7 @@ try:
         line_height = line_height_base
 
         # write to display
+        print('writing')
         epd.display(epd.getbuffer(Himage))
 
         print('sleeping')
