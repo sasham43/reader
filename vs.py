@@ -109,6 +109,8 @@ try:
         buffer = epd.getbuffer(Himage)
         print('buffered', time.time() - buffer_time)
 
+        del draw
+
         # write to display
         write_time = time.time()
         print('writing')
