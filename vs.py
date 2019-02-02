@@ -64,6 +64,8 @@ def split_into_rows(input):
         else:
             rows[row_number] = '{base} {word}'.format(base=rows[row_number], word=word)
 
+    return pages
+
     # print(words)
     # print(pages)
 
