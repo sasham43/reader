@@ -31,17 +31,32 @@ def split_into_rows(input):
     # split into array of dicts, with word prop and length
     # words = input.split()
     words = []
-    rows = ['']
+    # rows = ['']
+    pages = [
+        ['']
+    ]
     row_number = 0
+    page_number = 0
     page_length = 0
     for word in input.split():
-        words.append({
-            "word": word,
-            "length": len(word)
-        })
+        # words.append({
+        #     "word": word,
+        #     "length": len(word)
+        # })
+        # put into pages
+        if len(pages[page_number]) <= row_limit:
+            rows = pages[page_number]
+        else:
+            # new page
+            print('new_page')
+            page_number = page_number + 1
+            row_number = 0
+            pages.append([''])
+            rows = pages[page_number]
+
         # slowly shift the words into rows
         current_row_length = len(rows[row_number])
-        print(row_number, current_row_length)
+        # print(row_number, current_row_length)
         if current_row_length + len(word) + 1 > limit:
             # too big
             row_number = row_number + 1
@@ -50,7 +65,7 @@ def split_into_rows(input):
             rows[row_number] = '{base} {word}'.format(base=rows[row_number], word=word)
 
     print(words)
-    print(rows)
+    print(pages)
 
     # for i in range(0, len(input), limit):
     #     print(i, input[i:i+limit])
