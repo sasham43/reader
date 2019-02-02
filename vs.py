@@ -70,9 +70,9 @@ try:
     # print("Drawing")
 
     # go page by page
-    for index, page_number in enumerate(pages):
-        print(index, page_number)
-        page = pages[page_number]
+    for index, page in enumerate(pages):
+        print(index, page)
+        # page = pages[page_number]
         print('drawing')
         image_time = time.time()
         Himage = Image.new('1', (epd7in5.EPD_HEIGHT, epd7in5.EPD_WIDTH), 255)  # 255: clear the frame
