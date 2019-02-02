@@ -26,14 +26,12 @@ line_height_base = line_height
 # class Page:
 
 
-def split_into_pages(input):
+def split_into_rows(input):
     output = []
     # split into array of dicts, with word prop and length
     # words = input.split()
     words = []
-    rows = [{
-        "text": ''
-    }]
+    rows = ['']
     row_number = 0
     page_length = 0
     for word in input.split():
@@ -42,16 +40,14 @@ def split_into_pages(input):
             "length": len(word)
         })
         # slowly shift the words into rows
-        current_row_length = len(rows[row_number]['text'])
+        current_row_length = len(rows[row_number])
         print(row_number, current_row_length)
         if current_row_length + len(word) + 1 > limit:
             # too big
             row_number = row_number + 1
-            rows.append({
-                "text": word
-            })
+            rows.append(word)
         else:
-            rows[row_number]['text'] = '{base} {word}'.format(base=rows[row_number]['text'], word=word)
+            rows[row_number] = '{base} {word}'.format(base=rows[row_number], word=word)
 
     print(words)
     print(rows)
@@ -59,7 +55,7 @@ def split_into_pages(input):
     # for i in range(0, len(input), limit):
     #     print(i, input[i:i+limit])
 
-split_into_pages(ursula)
+split_into_rows(ursula)
 
 # try:
 #     epd = epd7in5.EPD()
