@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-import epd as epd7in5
-import time
-from PIL import Image,ImageDraw,ImageFont
+# import epd as epd7in5
+# import time
+# from PIL import Image,ImageDraw,ImageFont
 import traceback
 import sys
 
@@ -44,25 +44,30 @@ def split_into_rows(input):
         # slowly shift the words into rows
         current_row_length = len(rows[row_number])
 
-        if rows[row_number].find('wonder') > -1:
-            print 'rows', row_number, current_row_length, rows[row_number]
+        # if 'wonder' in rows[row_number]:
+        # if word == 'wonder':
+        #     print('rows', row_number, current_row_length, rows[row_number])
         # print(row_number, current_row_length)
         if current_row_length + len(word) + 1 > limit:
             # too big
             row_number = row_number + 1
-            rows.append(word)
+            if len(pages[page_number]) <= row_limit:
+                # rows = pages[page_number]
+                rows.append(word)
+            else:
+                page_number = page_number + 1
+                row_number = 0
+                pages.append([''])
+                rows = pages[page_number]
+            # rows.append(word)
         else:
             rows[row_number] = '{base} {word}'.format(base=rows[row_number], word=word)
 
-        if len(pages[page_number]) <= row_limit:
-            rows = pages[page_number]
-        else:
-            page_number = page_number + 1
-            row_number = 0
-            pages.append([''])
-            rows = pages[page_number]
+
 
     return pages
+
+# print(split_into_rows(ursula))
 
 # pages = split_into_rows(ursula)
 #

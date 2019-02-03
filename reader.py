@@ -73,6 +73,7 @@ def get_input(current_page):
         current_page = current_page - 1
     elif key == 'a':
         current_book = 'asimov.txt'
+        print('changing current books', current_book)
         get_book_text()
         show_page(pages[current_page])
         get_input(current_page)
