@@ -9,6 +9,7 @@ import pprint
 import json
 from os.path import expanduser
 import vs
+import keyboard
 
 home = expanduser("~")
 
@@ -51,7 +52,9 @@ try:
     book_text = open('{home}/books/{current_book}'.format(home=home, current_book=current_book)).read()
     pages = vs.split_into_rows(book_text)
     show_page(pages[current_page])
-    key = raw_input('< >')
+    # key = raw_input('< >')
+    print('< >')
+    key = keyboard.read_key()
 
     if key == '.':
         current_page = current_page + 1
