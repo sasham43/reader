@@ -20,6 +20,11 @@ print('current page:', data['current_page'])
 current_page = data['current_page']
 current_book = data['current_book']
 
+# fonts
+font_base = '/usr/share/fonts/treutype/msttcorefonts/{file}'
+font_file = 'Courier_New_Bold.ttf'
+font24 = ImageFont.truetype(font_base.format(file=font_file), 24)
+
 line_height_base = 25 # this isn't great
 
 epd = epd7in5.EPD()
