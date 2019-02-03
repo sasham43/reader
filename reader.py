@@ -55,7 +55,7 @@ try:
 
     if key == '.':
         current_page = current_page + 1
-    else if key == ',':
+    elif key == ',':
         current_page = current_page - 1
 
     if current_page < 0:
