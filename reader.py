@@ -24,18 +24,6 @@ line_height_base = 25 # this isn't great
 
 epd = epd7in5.EPD()
 
-try:
-    book_text = open('{home}/books/{current_book}'.format(home=home, current_book=current_book)).read()
-    pages = vs.split_into_rows(book_text)
-    show_page(pages[current_page])
-    key = input('< >')
-    print(key)
-except:
-    print('traceback.format_exc():\n%s', traceback.format_exc())
-    exit()
-
-
-
 def show_page(page):
     epd.init()
     Himage = Image.new('1', (epd7in5.EPD_HEIGHT, epd7in5.EPD_WIDTH), 255)  # 255: clear the frame
@@ -47,3 +35,13 @@ def show_page(page):
     epd.display(epd.getbuffer(Himage))
     time.sleep(1)
     epd.sleep()
+
+try:
+    book_text = open('{home}/books/{current_book}'.format(home=home, current_book=current_book)).read()
+    pages = vs.split_into_rows(book_text)
+    show_page(pages[current_page])
+    key = input('< >')
+    print(key)
+except:
+    print('traceback.format_exc():\n%s', traceback.format_exc())
+    exit()
