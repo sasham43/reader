@@ -19,8 +19,8 @@ else:
 try:
     epd = epd7in5.EPD()
     epd.init()
-    print("Clear")
-    epd.Clear(0xFF)
+    # print("Clear")
+    # epd.Clear(0xFF)
 
     print("Drawing")
     # print("read bmp file on window")
