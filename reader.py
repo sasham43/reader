@@ -71,6 +71,11 @@ def get_input(current_page):
         current_page = current_page + 1
     elif key == ',':
         current_page = current_page - 1
+    elif key == 'a':
+        current_book = 'asimov.txt'
+        get_book_text()
+        show_page(pages[current_page])
+        get_input(current_page)
 
     if current_page < 0:
         current_page = 0
@@ -78,9 +83,14 @@ def get_input(current_page):
     show_page(pages[current_page])
     get_input(current_page)
 
-try:
+def get_book_text():
     book_text = open('{home}/books/{current_book}'.format(home=home, current_book=current_book)).read()
-    pages = vs.split_into_rows(book_text)
+    return vs.split_into_rows(book_text)
+
+try:
+    # book_text = open('{home}/books/{current_book}'.format(home=home, current_book=current_book)).read()
+    # pages = vs.split_into_rows(book_text)
+    pages = get_book_text()
     show_page(pages[current_page])
     get_input(current_page)
     # print('< >')
