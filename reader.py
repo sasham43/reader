@@ -61,6 +61,7 @@ try:
     if current_page < 0:
         current_page = 0
     update_current_page(current_page)
+    show_page(pages[current_page])
 
 
 except:
