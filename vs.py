@@ -15,7 +15,7 @@ ursula = "It exists... It's real. I can call it a misunderstanding, but I can't 
 limit = 31
 
 # row limit = 25
-row_limit = 23
+row_limit = 24
 
 line_height = 25
 line_height_base = line_height
@@ -32,7 +32,7 @@ def split_into_rows(input):
     page_length = 0
     for word in input.split():
         # put into pages
-        if len(pages[page_number]) < row_limit:
+        if len(pages[page_number]) <= row_limit:
             rows = pages[page_number]
         else:
             page_number = page_number + 1
