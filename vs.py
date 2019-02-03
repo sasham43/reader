@@ -111,7 +111,7 @@ try:
 
         print('new page')
         # time.sleep(60)
-        epd.Clear(0xFF) # start off fresh
+        # epd.Clear(0xFF) # start off fresh
 
     # finished printing pages
     time.sleep(5)
