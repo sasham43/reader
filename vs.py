@@ -106,12 +106,17 @@ try:
         del Himage
         # del buffer
 
-        print('sleeping')
-        epd.sleep()
+        # print('sleeping')
+        # epd.sleep()
 
         print('new page')
         # time.sleep(60)
         epd.Clear(0xFF) # start off fresh
+
+    # finished printing pages
+    time.sleep(5)
+    print('sleeping')
+    epd.sleep()
 
 except:
     print('traceback.format_exc():\n%s', traceback.format_exc())
