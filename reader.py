@@ -45,7 +45,7 @@ try:
     book_text = open('{home}/books/{current_book}'.format(home=home, current_book=current_book)).read()
     pages = vs.split_into_rows(book_text)
     show_page(pages[current_page])
-    key = input('< >')
+    key = raw_input('< >')
     print(key)
 except:
     print('traceback.format_exc():\n%s', traceback.format_exc())
