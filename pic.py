@@ -22,7 +22,8 @@ try:
     # print("read bmp file on window")
     Himage2 = Image.new('1', (epd7in5.EPD_HEIGHT, epd7in5.EPD_WIDTH), 255)  # 255: clear the frame
     bmp = Image.open(pic)
-    Himage2.paste(bmp, (50,10))
+    # Himage2.paste(bmp, (50,10))
+    Himage2.paste(bmp)
 
     # write to display
     epd.display(epd.getbuffer(Himage2))
