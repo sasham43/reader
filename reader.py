@@ -67,6 +67,8 @@ def get_input(current_page):
     print('< >')
     key = getch()
 
+    print(key)
+
     if key == '.':
         current_page = current_page + 1
     elif key == ',':
