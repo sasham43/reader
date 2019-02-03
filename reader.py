@@ -76,7 +76,7 @@ def get_input(current_page):
         current_page = 0
     update_current_page(current_page)
     show_page(pages[current_page])
-    get_input()
+    get_input(current_page)
 
 try:
     book_text = open('{home}/books/{current_book}'.format(home=home, current_book=current_book)).read()
