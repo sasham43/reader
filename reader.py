@@ -11,6 +11,21 @@ from os.path import expanduser
 import vs
 import keyboard
 
+try:
+    # Win32
+    from msvcrt import getch
+except ImportError:
+    # UNIX
+    def getch():
+        import sys, tty, termios
+        fd = sys.stdin.fileno()
+        old = termios.tcgetattr(fd)
+        try:
+            tty.setraw(fd)
+            return sys.stdin.read(1)
+        finally:
+            termios.tcsetattr(fd, termios.TCSADRAIN, old)
+
 home = expanduser("~")
 
 file = '{home}/reader.json'.format(home=home)
@@ -54,7 +69,8 @@ try:
     show_page(pages[current_page])
     # key = raw_input('< >')
     print('< >')
-    key = keyboard.read_key()
+    # key = keyboard.read_key()
+    key = getch()
 
     if key == '.':
         current_page = current_page + 1
