@@ -63,13 +63,8 @@ def update_current_page(page):
     with open(file, 'w') as outfile:
         json.dump(data, outfile)
 
-try:
-    book_text = open('{home}/books/{current_book}'.format(home=home, current_book=current_book)).read()
-    pages = vs.split_into_rows(book_text)
-    show_page(pages[current_page])
-    # key = raw_input('< >')
+def get_input():
     print('< >')
-    # key = keyboard.read_key()
     key = getch()
 
     if key == '.':
@@ -81,6 +76,25 @@ try:
         current_page = 0
     update_current_page(current_page)
     show_page(pages[current_page])
+    get_input()
+
+try:
+    book_text = open('{home}/books/{current_book}'.format(home=home, current_book=current_book)).read()
+    pages = vs.split_into_rows(book_text)
+    show_page(pages[current_page])
+    get_input()
+    # print('< >')
+    # key = getch()
+    #
+    # if key == '.':
+    #     current_page = current_page + 1
+    # elif key == ',':
+    #     current_page = current_page - 1
+    #
+    # if current_page < 0:
+    #     current_page = 0
+    # update_current_page(current_page)
+    # show_page(pages[current_page])
 
 
 except:
