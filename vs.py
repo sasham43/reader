@@ -32,6 +32,7 @@ def split_into_rows(input):
     page_length = 0
     for word in input.split():
         # put into pages
+        rows = pages[page_number]
         # if len(pages[page_number]) <= row_limit:
         #     rows = pages[page_number]
         # else:
@@ -49,7 +50,7 @@ def split_into_rows(input):
             rows.append(word)
         else:
             rows[row_number] = '{base} {word}'.format(base=rows[row_number], word=word)
-            
+
         if len(pages[page_number]) <= row_limit:
             rows = pages[page_number]
         else:
