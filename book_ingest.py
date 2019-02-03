@@ -1,5 +1,5 @@
 import sqlite3
-conn = sqlite3.connect('reader.db')
+conn = sqlite3.connect('/home/pi/reader.db')
 
 c = conn.cursor()
 
