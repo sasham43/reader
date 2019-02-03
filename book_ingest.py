@@ -3,6 +3,7 @@ conn = sqlite3.connect('/home/pi/reader.db')
 
 print('module version', sqlite3.version)
 print('sqlite version', sqlite3.sqlite_version)
+print('conn', conn)
 
 c = conn.cursor()
 
