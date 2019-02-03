@@ -43,6 +43,9 @@ def split_into_rows(input):
 
         # slowly shift the words into rows
         current_row_length = len(rows[row_number])
+
+        if rows[row_number].find('wonder') > -1:
+            print 'rows', row_number, current_row_length, rows[row_number]
         # print(row_number, current_row_length)
         if current_row_length + len(word) + 1 > limit:
             # too big
