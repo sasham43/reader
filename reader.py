@@ -41,12 +41,28 @@ def show_page(page):
     time.sleep(1)
     epd.sleep()
 
+def update_current_page(page):
+    data['current_page'] = page
+    data['current_book'] = current_book
+    with open(file, 'w') as outfile:
+        json.dump(data, outfile)
+
 try:
     book_text = open('{home}/books/{current_book}'.format(home=home, current_book=current_book)).read()
     pages = vs.split_into_rows(book_text)
     show_page(pages[current_page])
     key = raw_input('< >')
-    print(key)
+
+    if key == '.':
+        current_page = current_page + 1
+    else if key == ',':
+        current_page = current_page - 1
+
+    if current_page < 0:
+        current_page = 0
+    update_current_page(current_page)
+
+
 except:
     print('traceback.format_exc():\n%s', traceback.format_exc())
     exit()
