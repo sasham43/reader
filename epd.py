@@ -51,6 +51,7 @@
 import epdconfig
 from PIL import Image
 import RPi.GPIO as GPIO
+import time
 
 # Display resolution
 EPD_WIDTH       = 600
@@ -200,7 +201,9 @@ class EPD:
 
     def display(self, image):
         self.send_command(DATA_START_TRANSMISSION_1)
+        start_time = time.time()
         for i in range(0, self.width // 4 * self.height):
+            print('looping', i, time.time() - start_time)
             temp1 = image[i]
             j = 0
             while (j < 4):
