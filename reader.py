@@ -63,7 +63,7 @@ def update_current_page(page):
     with open(file, 'w') as outfile:
         json.dump(data, outfile)
 
-def get_input():
+def get_input(current_page):
     print('< >')
     key = getch()
 
@@ -82,7 +82,7 @@ try:
     book_text = open('{home}/books/{current_book}'.format(home=home, current_book=current_book)).read()
     pages = vs.split_into_rows(book_text)
     show_page(pages[current_page])
-    get_input()
+    get_input(current_page)
     # print('< >')
     # key = getch()
     #
