@@ -90,6 +90,8 @@ def get_input(pages, current_page):
 
     if current_page < 0:
         current_page = 0
+    elif current_page > len(pages):
+        current_page = len(pages)
     update_data(page=current_page)
     show_page(pages[current_page])
     get_input(pages, current_page)
