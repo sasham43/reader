@@ -105,6 +105,7 @@ def open_book():
         show_page(pages[current_page])
         get_input(pages, current_page)
     except:
+        print('traceback.format_exc():\n%s', traceback.format_exc())
         get_input(pages, current_page)
 
 try:
