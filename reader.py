@@ -102,7 +102,8 @@ def open_book():
     pages = get_book_text(current_book)
     try:
         show_page(pages[current_page])
-    get_input(pages, current_page)
+    except:
+        get_input(pages, current_page)
 
 try:
     # book_text = open('{home}/books/{current_book}'.format(home=home, current_book=current_book)).read()
