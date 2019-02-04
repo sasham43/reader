@@ -45,7 +45,10 @@ line_height_base = 25 # this isn't great
 
 epd = epd7in5.EPD()
 
-def show_page(page):
+def show_page(page=None):
+    if page == None:
+        page = data['pages'][data['current_page']]
+
     epd.init()
     Himage = Image.new('1', (epd7in5.EPD_HEIGHT, epd7in5.EPD_WIDTH), 255)  # 255: clear the frame
     draw = ImageDraw.Draw(Himage)
@@ -91,10 +94,10 @@ def get_input():
 
     if data['current_page'] < 0:
         data['current_page'] = 0
-    elif data['current_page'] > len(pages):
-        data['current_page'] = len(pages)
+    elif data['current_page'] > len(data['pages']):
+        data['current_page'] = len(data['pages'])
     update_data()
-    show_page(pages[data['current_page']])
+    show_page()
     get_input()
 
 def get_book_text():
@@ -103,10 +106,10 @@ def get_book_text():
     return vs.split_into_rows(book_text)
 
 def open_book():
-    pages = get_book_text()
+    data['pages'] = get_book_text()
     try:
         # print('pages', current_page, len(pages))
-        show_page(pages[data['current_page']])
+        show_page()
         get_input()
     except:
         print('traceback.format_exc():\n%s', traceback.format_exc())
