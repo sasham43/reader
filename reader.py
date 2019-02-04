@@ -63,7 +63,7 @@ def update_data(page=current_page, book=current_book):
     with open(file, 'w') as outfile:
         json.dump(data, outfile)
 
-def get_input(current_page):
+def get_input(pages, current_page):
     commands = ['.', ',', 'a', 'q']
     print('< >')
     key = getch()
@@ -91,7 +91,7 @@ def get_input(current_page):
         current_page = 0
     update_data(page=current_page)
     show_page(pages[current_page])
-    get_input(current_page)
+    get_input(pages, current_page)
 
 def get_book_text(current_book):
     update_data(book=current_book)
@@ -101,7 +101,7 @@ def get_book_text(current_book):
 def open_book():
     pages = get_book_text(current_book)
     show_page(pages[current_page])
-    get_input(current_page)
+    get_input(pages, current_page)
 
 try:
     # book_text = open('{home}/books/{current_book}'.format(home=home, current_book=current_book)).read()
