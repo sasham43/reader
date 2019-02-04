@@ -80,9 +80,10 @@ def get_input(current_page):
     elif key == 'a':
         current_book = 'asimov.txt'
         print('changing current books', current_book)
-        pages = get_book_text(current_book)
-        show_page(pages[current_page])
-        get_input(current_page)
+        open_book()
+        # pages = get_book_text(current_book)
+        # show_page(pages[current_page])
+        # get_input(current_page)
     elif key == 'q':
         exit(0)
 
@@ -97,24 +98,18 @@ def get_book_text(current_book):
     book_text = open('{home}/books/{current_book}'.format(home=home, current_book=current_book)).read()
     return vs.split_into_rows(book_text)
 
-try:
-    # book_text = open('{home}/books/{current_book}'.format(home=home, current_book=current_book)).read()
-    # pages = vs.split_into_rows(book_text)
+def open_book():
     pages = get_book_text(current_book)
     show_page(pages[current_page])
     get_input(current_page)
-    # print('< >')
-    # key = getch()
-    #
-    # if key == '.':
-    #     current_page = current_page + 1
-    # elif key == ',':
-    #     current_page = current_page - 1
-    #
-    # if current_page < 0:
-    #     current_page = 0
-    # update_current_page(current_page)
+
+try:
+    # book_text = open('{home}/books/{current_book}'.format(home=home, current_book=current_book)).read()
+    # pages = vs.split_into_rows(book_text)
+    # pages = get_book_text(current_book)
     # show_page(pages[current_page])
+    # get_input(current_page)
+    open_book()
 
 
 except:
