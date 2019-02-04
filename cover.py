@@ -20,7 +20,7 @@ import random
 covers_path = '/home/pi/covers'
 covers = filter(lambda x: ('.bmp' in x), os.listdir(covers_path))
 pic_path = random.choice(covers)
-pic = '{dir_path/pic_path}'.format(dir_path=covers_path, pic_path=pic_path)
+pic = '{dir_path}/{pic_path}'.format(dir_path=covers_path, pic_path=pic_path)
 
 try:
     epd = epd7in5.EPD()
