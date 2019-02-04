@@ -80,6 +80,7 @@ def get_input(pages, current_page):
         current_page = current_page - 1
     elif key == 'a':
         current_book = 'asimov.txt'
+        current_page = 0
         print('changing current books', current_book)
         open_book()
         # pages = get_book_text(current_book)
