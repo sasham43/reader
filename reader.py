@@ -95,7 +95,7 @@ def get_book_text(current_book):
 try:
     # book_text = open('{home}/books/{current_book}'.format(home=home, current_book=current_book)).read()
     # pages = vs.split_into_rows(book_text)
-    pages = get_book_text()
+    pages = get_book_text(current_book)
     show_page(pages[current_page])
     get_input(current_page)
     # print('< >')
