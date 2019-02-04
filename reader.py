@@ -76,7 +76,7 @@ def get_input(current_page):
     elif key == 'a':
         current_book = 'asimov.txt'
         print('changing current books', current_book)
-        get_book_text()
+        get_book_text(current_book)
         show_page(pages[current_page])
         get_input(current_page)
     elif key == 'q':
@@ -88,7 +88,7 @@ def get_input(current_page):
     show_page(pages[current_page])
     get_input(current_page)
 
-def get_book_text():
+def get_book_text(current_book):
     book_text = open('{home}/books/{current_book}'.format(home=home, current_book=current_book)).read()
     return vs.split_into_rows(book_text)
 
