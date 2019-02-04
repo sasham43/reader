@@ -57,9 +57,9 @@ def show_page(page):
     time.sleep(1)
     epd.sleep()
 
-def update_current_page(page):
+def update_data(page=current_page, book=current_book):
     data['current_page'] = page
-    data['current_book'] = current_book
+    data['current_book'] = book
     with open(file, 'w') as outfile:
         json.dump(data, outfile)
 
@@ -76,7 +76,7 @@ def get_input(current_page):
     elif key == 'a':
         current_book = 'asimov.txt'
         print('changing current books', current_book)
-        get_book_text(current_book)
+        pages = get_book_text(current_book)
         show_page(pages[current_page])
         get_input(current_page)
     elif key == 'q':
@@ -84,11 +84,12 @@ def get_input(current_page):
 
     if current_page < 0:
         current_page = 0
-    update_current_page(current_page)
+    update_data(page=current_page)
     show_page(pages[current_page])
     get_input(current_page)
 
 def get_book_text(current_book):
+    update_data(book=current_book)
     book_text = open('{home}/books/{current_book}'.format(home=home, current_book=current_book)).read()
     return vs.split_into_rows(book_text)
 
