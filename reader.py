@@ -100,7 +100,8 @@ def get_book_text(current_book):
 
 def open_book():
     pages = get_book_text(current_book)
-    show_page(pages[current_page])
+    try:
+        show_page(pages[current_page])
     get_input(pages, current_page)
 
 try:
