@@ -80,7 +80,7 @@ def get_input(current_page):
         show_page(pages[current_page])
         get_input(current_page)
     elif key == 'q':
-        exit()
+        exit(0)
 
     if current_page < 0:
         current_page = 0
