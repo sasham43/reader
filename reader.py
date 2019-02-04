@@ -94,7 +94,7 @@ def get_input():
     elif data['current_page'] > len(pages):
         data['current_page'] = len(pages)
     update_data()
-    show_page(pages[current_page])
+    show_page(pages[data['current_page']])
     get_input()
 
 def get_book_text():
@@ -106,7 +106,7 @@ def open_book():
     pages = get_book_text()
     try:
         # print('pages', current_page, len(pages))
-        show_page(pages[current_page])
+        show_page(pages[data['current_page']])
         get_input()
     except:
         print('traceback.format_exc():\n%s', traceback.format_exc())
