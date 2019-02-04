@@ -64,10 +64,14 @@ def update_data(page=current_page, book=current_book):
         json.dump(data, outfile)
 
 def get_input(current_page):
+    commands = ['.', ',', 'a', 'q']
     print('< >')
     key = getch()
 
     print(key)
+
+    if key not in commands:
+        get_input(current_page)
 
     if key == '.':
         current_page = current_page + 1
