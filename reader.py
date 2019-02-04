@@ -105,6 +105,7 @@ def get_book_text(current_book):
 def open_book():
     pages = get_book_text(current_book)
     try:
+        print('pages', current_page, len(pages))
         show_page(pages[current_page])
         get_input(pages, current_page)
     except:
