@@ -71,7 +71,8 @@ def get_input(pages, current_page):
     print(key)
 
     if key not in commands:
-        get_input(current_page)
+        print('command not recognized')
+        get_input(pages, current_page)
 
     if key == '.':
         current_page = current_page + 1
