@@ -6,6 +6,7 @@ from PIL import Image,ImageDraw,ImageFont
 import traceback
 import sys
 import os
+import random
 # print "This is the name of the script: ", sys.argv[0]
 
 # if len(sys.argv) > 1:
