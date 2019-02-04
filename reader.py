@@ -32,9 +32,9 @@ file = '{home}/reader.json'.format(home=home)
 
 file_data = open(file).read()
 data = json.loads(file_data)
-print('current page:', data['current_page'])
-current_page = data['current_page']
-current_book = data['current_book']
+print('current data:', data)
+# current_page = data['current_page']
+# current_book = data['current_book']
 
 # fonts
 font_base = '/usr/share/fonts/treutype/msttcorefonts/{file}'
@@ -57,13 +57,13 @@ def show_page(page):
     time.sleep(1)
     epd.sleep()
 
-def update_data(page=current_page, book=current_book):
-    data['current_page'] = page
-    data['current_book'] = book
+def update_data():
+    # data['current_page'] = page
+    # data['current_book'] = book
     with open(file, 'w') as outfile:
         json.dump(data, outfile)
 
-def get_input(pages, current_page):
+def get_input():
     commands = ['.', ',', 'a', 'q']
     print('< >')
     key = getch()
@@ -72,16 +72,16 @@ def get_input(pages, current_page):
 
     if key not in commands:
         print('command not recognized')
-        get_input(pages, current_page)
+        get_input()
 
     if key == '.':
-        current_page = current_page + 1
+        data['current_page'] = data['current_page'] + 1
     elif key == ',':
-        current_page = current_page - 1
+        data['current_page'] = data['current_page'] - 1
     elif key == 'a':
-        current_book = 'asimov.txt'
-        current_page = 0
-        print('changing current books', current_book)
+        data['current_book'] = 'asimov.txt'
+        data['current_page'] = 0
+        print('changing current books', data)
         open_book()
         # pages = get_book_text(current_book)
         # show_page(pages[current_page])
@@ -89,28 +89,28 @@ def get_input(pages, current_page):
     elif key == 'q':
         exit(0)
 
-    if current_page < 0:
-        current_page = 0
-    elif current_page > len(pages):
-        current_page = len(pages)
-    update_data(page=current_page)
+    if data['current_page'] < 0:
+        data['current_page'] = 0
+    elif data['current_page'] > len(pages):
+        data['current_page'] = len(pages)
+    update_data()
     show_page(pages[current_page])
-    get_input(pages, current_page)
+    get_input()
 
-def get_book_text(current_book):
-    update_data(book=current_book)
-    book_text = open('{home}/books/{current_book}'.format(home=home, current_book=current_book)).read()
+def get_book_text():
+    update_data()
+    book_text = open('{home}/books/{current_book}'.format(home=home, current_book=data['current_book'])).read()
     return vs.split_into_rows(book_text)
 
 def open_book():
-    pages = get_book_text(current_book)
+    pages = get_book_text()
     try:
-        print('pages', current_page, len(pages))
+        # print('pages', current_page, len(pages))
         show_page(pages[current_page])
-        get_input(pages, current_page)
+        get_input()
     except:
         print('traceback.format_exc():\n%s', traceback.format_exc())
-        get_input(pages, current_page)
+        get_input()
 
 try:
     # book_text = open('{home}/books/{current_book}'.format(home=home, current_book=current_book)).read()

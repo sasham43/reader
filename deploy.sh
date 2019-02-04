@@ -1,4 +1,4 @@
 #!/bin/bash
 
 git pull
-python vs.py
+python reader.py
