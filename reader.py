@@ -10,6 +10,7 @@ import json
 from os.path import expanduser
 import vs, cover
 import keyboard
+import random
 
 try:
     # Win32
@@ -40,6 +41,7 @@ print('current data:', data)
 font_base = '/usr/share/fonts/treutype/msttcorefonts/{file}'
 font_file = 'Courier_New_Bold.ttf'
 font24 = ImageFont.truetype(font_base.format(file=font_file), 24)
+books = filter(lambda x: ('.txt' in x), os.listdir('/home/pi/books'))
 
 line_height_base = 25 # this isn't great
 
@@ -95,6 +97,10 @@ def get_input():
     elif key == 'r':
         cover.display_cover('random')
         return get_input()
+    elif key == 'b':
+        data['current_book'] = random.choice(books)
+        data['current_page'] = 0
+        print('random books', data)
     elif key == 'q':
         exit(0)
 
