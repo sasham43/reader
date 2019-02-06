@@ -11,6 +11,7 @@ from os.path import expanduser
 import vs, cover
 import keyboard
 import random
+import os
 
 try:
     # Win32
