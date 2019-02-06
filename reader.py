@@ -88,6 +88,7 @@ def get_input():
         open_book()
     elif key == 'r':
         cover.display_cover('random')
+        return get_input()
     elif key == 'q':
         exit(0)
 
