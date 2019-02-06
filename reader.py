@@ -8,7 +8,7 @@ import sys
 import pprint
 import json
 from os.path import expanduser
-import vs
+import vs, cover
 import keyboard
 
 try:
@@ -67,7 +67,7 @@ def update_data():
         json.dump(data, outfile)
 
 def get_input():
-    commands = ['.', ',', 'a', 'q']
+    commands = ['.', ',', 'a', 'q', 'r']
     print('< >')
     key = getch()
 
@@ -86,9 +86,8 @@ def get_input():
         data['current_page'] = 0
         print('changing current books', data)
         open_book()
-        # pages = get_book_text(current_book)
-        # show_page(pages[current_page])
-        # get_input(current_page)
+    elif key == 'r':
+        cover.display_cover('random')
     elif key == 'q':
         exit(0)
 
