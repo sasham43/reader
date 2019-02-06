@@ -101,6 +101,7 @@ def get_input():
     elif key == 'b':
         data['current_book'] = random.choice(books)
         data['current_page'] = 0
+        open_book()
         print('random books', data)
     elif key == 'q':
         exit(0)
