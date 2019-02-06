@@ -56,8 +56,12 @@ def show_page(page=None):
     for line in page:
         draw.text((10, line_height), line, font = font24, fill = 0)
         line_height = line_height_base + line_height
+
+    buffer_time = time.time()
+    buffer = epd.getbuffer(Himage)
+    print('buffer time', time.time() - buffer_time)
     display_time = time.time()
-    epd.display(epd.getbuffer(Himage))
+    epd.display(buffer)
     print('display time', time.time() - display_time)
     time.sleep(1)
     epd.sleep()
