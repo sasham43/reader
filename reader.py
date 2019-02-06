@@ -76,7 +76,7 @@ def update_data():
         json.dump(data, outfile)
 
 def get_input():
-    commands = ['.', ',', 'a', 'q', 'r']
+    commands = ['.', ',', 'a', 'q', 'r', 'b']
     print('< >')
     key = getch()
 
