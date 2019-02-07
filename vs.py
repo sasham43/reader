@@ -34,8 +34,9 @@ def split_into_rows(input):
 
     # remove special characters
     # my_str = "hey th~!ere"
-    input = re.sub('[^a-zA-Z0-9 \n\.]', '', input)
-    # print my_new_string
+    input = input.replace("“","\"")
+    input = input.replace("”","\"")
+    input = re.sub('[^a-zA-Z0-9 \n\."]', '', input)
 
     for word in input.split():
         # put into pages
