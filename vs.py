@@ -16,7 +16,7 @@ ursula = "It exists... It's real. I can call it a misunderstanding, but I can't 
 limit = 31
 
 # row limit = 25
-row_limit = 23
+row_limit = 22
 
 line_height = 25
 line_height_base = line_height
