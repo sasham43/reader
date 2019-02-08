@@ -72,7 +72,7 @@ def show_page(page=None):
 def update_data():
     # data['current_page'] = page
     # data['current_book'] = book
-    print 'current data', data
+    print 'current data', data['current_book'], data['current_page']
     with open(file, 'w') as outfile:
         json.dump(data, outfile)
 
