@@ -108,7 +108,7 @@ def get_input(input_key):
 
     if key not in commands:
         print('command not recognized')
-        get_input()
+        get_input(None)
 
     if key == '.':
         data['current_page'] = data['current_page'] + 1
@@ -121,7 +121,7 @@ def get_input(input_key):
         open_book()
     elif key == 'r':
         cover.display_cover('random')
-        return get_input()
+        return get_input(None)
     elif key == 'b':
         data['current_book'] = random.choice(books)
         data['current_page'] = 0
@@ -136,7 +136,7 @@ def get_input(input_key):
         data['current_page'] = len(data['pages'])
     update_data()
     show_page()
-    get_input()
+    get_input(None)
 
 def get_book_text():
     update_data()
@@ -148,10 +148,10 @@ def open_book():
     try:
         # print('pages', current_page, len(pages))
         show_page()
-        get_input()
+        get_input(None)
     except:
         print('traceback.format_exc():\n%s', traceback.format_exc())
-        get_input()
+        get_input(None)
 
 
 # buttonshim
