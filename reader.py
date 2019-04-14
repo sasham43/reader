@@ -20,7 +20,7 @@ try:
 except ImportError:
     exit("This library requires the evdev module\nInstall with: sudo pip install evdev")
 
-KEYCODES = [e.KEY_COMMA, e.KEY_DOT, e.KEY_C, e.KEY_D, e.KEY_E]
+KEYCODES = [e.KEY_COMMA, e.KEY_DOT, e.KEY_C, e.KEY_R, e.KEY_Q]
 BUTTONS = [buttonshim.BUTTON_A, buttonshim.BUTTON_B, buttonshim.BUTTON_C, buttonshim.BUTTON_D, buttonshim.BUTTON_E]
 
 try:
@@ -95,10 +95,14 @@ def update_data():
     with open(file, 'w') as outfile:
         json.dump(data, outfile)
 
-def get_input():
+def get_input(input_key):
     commands = ['.', ',', 'a', 'q', 'r', 'b']
     print('< >')
-    key = getch()
+    if input_key == None:
+        key = getch()
+    else:
+        key = input_key
+
 
     print(key)
 
@@ -156,8 +160,20 @@ def button_p_handler(button, pressed):
     print("button pressed:{0}".format(button))
     keycode = KEYCODES[button]
     print("Press: {}".format(keycode))
-    ui.write(e.EV_KEY, keycode, 1)
-    ui.syn()
+    input_key = ''
+    if keycode == 51:
+        input_key = ','
+    elif keycode == 52:
+        input_key = '.'
+    elif keycode == 16:
+        input_key = 'q'
+    elif keycode == 19:
+        input_key = 'r'
+    get_input(input_key)
+
+
+    # ui.write(e.EV_KEY, keycode, 1)
+    # ui.syn()
 
 try:
     # book_text = open('{home}/books/{current_book}'.format(home=home, current_book=current_book)).read()
