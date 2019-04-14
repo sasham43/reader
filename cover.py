@@ -18,11 +18,6 @@ import random
 # else:
 #     pic = '/home/pi/cover.bmp'
 
-if len(sys.argv) > 1:
-    run_script = True
-    display_cover()
-else:
-    run_script = False
 
 def display_cover(cover):
         covers_path = '/home/pi/covers'
@@ -65,3 +60,9 @@ def display_cover(cover):
             print('traceback.format_exc():\n%s', traceback.format_exc())
             if run_script == True:
                 exit()
+
+if len(sys.argv) > 1:
+    run_script = True
+    display_cover()
+else:
+    run_script = False
