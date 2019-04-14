@@ -46,7 +46,8 @@ except uinput.UInputError as e:
     print("Have you tried running as root? sudo {}".format(sys.argv[0]))
     sys.exit(0)
 
-home = expanduser("~")
+# home = expanduser("~")
+home = '/home/pi'
 
 file = '{home}/reader.json'.format(home=home)
 
