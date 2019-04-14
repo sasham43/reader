@@ -97,6 +97,8 @@ def update_data():
 
 def get_input(input_key):
     commands = ['.', ',', 'a', 'q', 'r', 'b']
+    #0de80d - green
+    buttonshim.set_pixel(0x0d, 0xe8, 0x0d)
     print('< >')
     if input_key == None:
         key = getch()
@@ -111,8 +113,12 @@ def get_input(input_key):
         get_input(None)
 
     if key == '.':
+        # #e8e50d - yellow
+        buttonshim.set_pixel(0xe8, 0xe5, 0x0d)
         data['current_page'] = data['current_page'] + 1
     elif key == ',':
+        #e80d32 - red
+        buttonshim.set_pixel(0xe8, 0x0d, 0x32)
         data['current_page'] = data['current_page'] - 1
     elif key == 'a':
         data['current_book'] = 'asimov.txt'
@@ -120,6 +126,8 @@ def get_input(input_key):
         print('changing current books', data)
         open_book()
     elif key == 'r':
+        #c00de8 - purple
+        buttonshim.set_pixel(0xc0, 0x0d, 0xe8)
         cover.display_cover('random')
         return get_input(None)
     elif key == 'b':
@@ -128,6 +136,7 @@ def get_input(input_key):
         open_book()
         print('random books', data)
     elif key == 'q':
+        buttonshim.set_pixel(0x00, 0x00, 0x00)
         exit(0)
 
     if data['current_page'] < 0:
