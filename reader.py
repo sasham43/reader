@@ -12,6 +12,16 @@ import vs, cover
 import keyboard
 import random
 import os
+import signal
+import buttonshim
+
+try:
+    from evdev import uinput, UInput, ecodes as e
+except ImportError:
+    exit("This library requires the evdev module\nInstall with: sudo pip install evdev")
+
+KEYCODES = [e.KEY_COMMA, e.KEY_DOT, e.KEY_C, e.KEY_D, e.KEY_E]
+BUTTONS = [buttonshim.BUTTON_A, buttonshim.BUTTON_B, buttonshim.BUTTON_C, buttonshim.BUTTON_D, buttonshim.BUTTON_E]
 
 try:
     # Win32
@@ -129,6 +139,16 @@ def open_book():
     except:
         print('traceback.format_exc():\n%s', traceback.format_exc())
         get_input()
+
+
+# buttonshim
+@buttonshim.on_press(BUTTONS)
+def button_p_handler(button, pressed):
+    print("button pressed:{0}".format(button))
+    keycode = KEYCODES[button]
+    print("Press: {}".format(keycode))
+    ui.write(e.EV_KEY, keycode, 1)
+    ui.syn()
 
 try:
     # book_text = open('{home}/books/{current_book}'.format(home=home, current_book=current_book)).read()
