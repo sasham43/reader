@@ -38,6 +38,14 @@ except ImportError:
         finally:
             termios.tcsetattr(fd, termios.TCSADRAIN, old)
 
+try:
+    ui = UInput({e.EV_KEY: KEYCODES}, name="Button-SHIM", bustype=e.BUS_USB)
+
+except uinput.UInputError as e:
+    print(e.message)
+    print("Have you tried running as root? sudo {}".format(sys.argv[0]))
+    sys.exit(0)
+
 home = expanduser("~")
 
 file = '{home}/reader.json'.format(home=home)
