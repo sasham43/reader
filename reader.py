@@ -181,7 +181,7 @@ def button_p_handler(button, pressed):
         input_key = ','
     elif keycode == 52:
         input_key = '.'
-    elif keycode == 16:
+    elif keycode == 46:
         input_key = 'p'
     elif keycode == 19:
         input_key = 'r'
