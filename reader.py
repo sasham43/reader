@@ -101,7 +101,7 @@ def shutdown_pi():
     call("sudo shutdown -h now", shell=True)
 
 def get_input(input_key):
-    commands = ['.', ',', 'a', 'q', 'r', 'b']
+    commands = ['.', ',', 'a', 'p', 'q', 'r', 'b']
     #0de80d - green
     buttonshim.set_pixel(0x0d, 0xe8, 0x0d)
     print('< >')
@@ -141,8 +141,9 @@ def get_input(input_key):
         open_book()
         print('random books', data)
     elif key == 'q':
-        # buttonshim.set_pixel(0x00, 0x00, 0x00)
-        # exit(0)
+        buttonshim.set_pixel(0x00, 0x00, 0x00)
+        exit(0)
+    elif key == 'p':
         shutdown_pi()
 
     if data['current_page'] < 0:
@@ -181,7 +182,7 @@ def button_p_handler(button, pressed):
     elif keycode == 52:
         input_key = '.'
     elif keycode == 16:
-        input_key = 'q'
+        input_key = 'p'
     elif keycode == 19:
         input_key = 'r'
     get_input(input_key)
