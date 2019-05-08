@@ -97,6 +97,7 @@ def update_data():
         json.dump(data, outfile)
 
 def shutdown_pi():
+    cover.display_cover('random')
     call("sudo shutdown -h now", shell=True)
 
 def get_input(input_key):
