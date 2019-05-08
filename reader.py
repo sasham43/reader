@@ -140,8 +140,9 @@ def get_input(input_key):
         open_book()
         print('random books', data)
     elif key == 'q':
-        buttonshim.set_pixel(0x00, 0x00, 0x00)
-        exit(0)
+        # buttonshim.set_pixel(0x00, 0x00, 0x00)
+        # exit(0)
+        shutdown_pi()
 
     if data['current_page'] < 0:
         data['current_page'] = 0
