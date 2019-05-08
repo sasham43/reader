@@ -14,6 +14,7 @@ import random
 import os
 import signal
 import buttonshim
+from subprocess import call
 
 try:
     from evdev import uinput, UInput, ecodes as e
@@ -94,6 +95,9 @@ def update_data():
     print 'current data', data['current_book'], data['current_page']
     with open(file, 'w') as outfile:
         json.dump(data, outfile)
+
+def shutdown_pi():
+    call("sudo shutdown -h now", shell=True)
 
 def get_input(input_key):
     commands = ['.', ',', 'a', 'q', 'r', 'b']
